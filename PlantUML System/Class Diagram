@@ -1,0 +1,46 @@
+@startuml
+class User {
+    +userId: String
+    +name: String
+    +email: String
+    +sendMessage(msg: String)
+    +receiveMessage(msg: String)
+}
+
+class ChatBot {
+    +sessionId: String
+    +receiveUserMessage(msg: String)
+    +sendResponse(msg: String)
+    +queryKnowledgeBase(query: String)
+    +createSupportTicket(issue: String)
+}
+
+class KnowledgeBase {
+    +articles: List
+    +search(query: String): String
+}
+
+class TicketingSystem {
+    +tickets: List
+    +createTicket(userId: String, issue: String)
+    +updateTicket(ticketId: String, status: String)
+}
+
+class VPNServerAPI {
+    +servers: List
+    +checkServerStatus(region: String): String
+    +connect(userId: String, region: String)
+}
+
+class AnalyticsModule {
+    +collectUserData(userId: String, message: String)
+    +generateReport()
+}
+
+User "1" --> "1" ChatBot : interacts with
+ChatBot "1" --> "*" KnowledgeBase : queries
+ChatBot "1" --> "*" TicketingSystem : creates tickets
+ChatBot "1" --> "*" VPNServerAPI : requests connection
+ChatBot "1" --> "*" AnalyticsModule : logs usage
+
+@enduml
