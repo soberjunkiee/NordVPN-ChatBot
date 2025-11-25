@@ -1,0 +1,27 @@
+@startuml
+node "User Device" {
+    artifact "NordVPN App / Web Client"
+}
+
+node "ChatBot Server" {
+    component "ChatBot Engine"
+    component "Analytics Module"
+}
+
+node "KnowledgeBase Server" {
+    database "KnowledgeBase"
+}
+
+node "Ticketing Server" {
+    database "TicketingSystem"
+}
+
+node "VPN Servers" {
+    component "VPNServerAPI"
+}
+
+"User Device" --> "ChatBot Server": Sends Messages
+"ChatBot Server" --> "KnowledgeBase Server": Queries
+"ChatBot Server" --> "Ticketing Server": Creates Tickets
+"ChatBot Server" --> "VPN Servers": Connect requests
+@enduml
