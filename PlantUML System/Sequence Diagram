@@ -1,0 +1,15 @@
+@startuml
+actor User
+participant ChatBot
+participant KnowledgeBase
+participant TicketingSystem
+participant VPNServerAPI
+
+User -> ChatBot: "I can't connect to Canadian server"
+ChatBot -> VPNServerAPI: checkServerStatus("Canada")
+VPNServerAPI --> ChatBot: "Server is down"
+ChatBot -> User: "Server seems down, creating a ticket"
+ChatBot -> TicketingSystem: createTicket(userId, "Can't connect to Canadian server")
+TicketingSystem --> ChatBot: TicketID #123
+ChatBot -> User: "Ticket created: #123. Support will contact you soon."
+@enduml
