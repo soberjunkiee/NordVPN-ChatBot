@@ -1,0 +1,12 @@
+@startuml
+start
+:User sends message to ChatBot;
+if (Can ChatBot answer?) then (yes)
+    :ChatBot queries KnowledgeBase;
+    :ChatBot sends answer to User;
+else (no)
+    :ChatBot creates support ticket;
+    :ChatBot notifies User of ticket;
+endif
+stop
+@enduml
