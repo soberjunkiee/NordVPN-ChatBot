@@ -1,0 +1,14 @@
+@startuml
+actor User
+actor Admin
+
+rectangle "NordVPN ChatBot System" {
+    User --> (Ask for VPN connection)
+    User --> (Report an Issue)
+    User --> (Ask for Help)
+    ChatBot --> (Search Knowledge Base)
+    ChatBot --> (Create Support Ticket)
+    Admin --> (Manage Knowledge Base)
+    Admin --> (Monitor Analytics)
+}
+@enduml
